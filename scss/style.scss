@@ -1,0 +1,233 @@
+@import url('./font.css');
+
+/* ---ОБНУЛЕНИЕ------- */
+// плюс для поделючения шрифтов не забывать добавлять в конец кода подключания &display=swap
+*,
+*::before,
+*::after {
+	padding: 0;
+	margin: 0;
+	border: 0;
+	box-sizing: border-box;
+}
+a{
+	color: inherit;
+}
+a,button {
+	
+	text-decoration: none;
+   cursor: pointer;
+}
+button{
+   background: none;
+   border: none;
+   outline: none;
+   
+}
+ul,
+ol,
+li {
+	list-style: none;
+}
+
+img {
+	vertical-align: top;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+	font-weight: inherit;
+	font-size: inherit;
+}
+html{
+	scroll-behavior: smooth;
+}
+html,
+body {
+	height: 100%;
+
+}
+body {
+	font-family:  "Montserrat", Arial, Helvetica, sans-serif;
+   // font-size: ;
+   color: #000;
+}
+
+
+
+[class*="__container"]{
+
+	max-width: 1440px;
+	margin: 0px auto;
+  padding: 0px 15px;
+}
+@media(max-width: 1087px){
+  [class*="__container"]{
+    max-width: 970px;
+  }
+}
+
+
+
+/* ---TABLET все объединено ниже------- */
+@media(max-width: 991.98px){
+  
+}
+
+
+
+/* ---MOBILE ------- */
+@media(max-width: 767.98px){
+  [class*="__container"]{
+    max-width: none;
+  }
+}
+/* ---MOBILE SMALL ------- */
+@media(max-width: 479.98px){
+   
+}
+
+
+/* ---ОБНУЛЕНИЕ END------- */
+
+
+
+
+//? БЭМ блоки 
+
+
+//? БЭМ блоки END
+
+//! variables
+
+$transitionEffect: all 0.3s ease 0s;
+$bgc-standart: rgb(48, 48, 201);
+$bgc-win: #30c94c;
+$bgc-lose: #c9304f ;
+
+$bgc-standart-hover: rgb(108, 108, 241) ;
+
+
+//!variables  END
+
+.wrapper{
+	display: flex;
+	flex-direction: column;
+	width: 100%;
+	height: 100%;
+
+	justify-content: center;
+	align-items: center;
+	background-color: $bgc-standart;
+	transition: $transitionEffect;
+
+	.quiz-block {
+		display: none;
+		
+		&.active{
+			display: block;
+		}
+		
+		background-color: white;
+		padding: 10px;
+		border: 1px solid black;
+		box-shadow: 0px 5px 16px black;
+		border-radius: 5px;
+
+		& > *:not(:last-child) {
+			margin-bottom: 15px;
+		}
+
+		&__question {
+
+			
+		}
+
+		&__options-block {
+			
+		}
+		
+
+		&__buttons {
+
+			display: none;
+
+			
+				display: flex;
+			
+			
+			justify-content: center;
+			gap: 10px;
+
+		
+		}
+	
+		&__button {
+
+		}
+	
+	
+	
+	}
+	
+	.options-block {
+		position: relative;
+		display: grid;
+		grid-template-columns: repeat(2, 1fr);
+		gap: 10px;
+
+		&::before{
+			position: absolute;
+			z-index: -1;
+			content: '';
+			inset:0;
+
+
+		}
+
+		&.disabled{
+			 &::before{
+				z-index: 2;
+				// background-color: #0000008d;
+			 }
+		}
+			&__option {
+				transition: $transitionEffect;
+				background-color: $bgc-standart;
+				color: white;
+				padding: 5px;
+				border-radius: 5px;
+
+				cursor: pointer;
+
+				&.win{
+					background-color: $bgc-win;
+				}
+				&.lose{
+					background-color: $bgc-lose;
+				}
+			}
+	}
+	.option-from-quiz {
+	}
+
+	.button {
+		display: inline-block;
+		cursor: pointer;
+		transition: $transitionEffect;
+		padding: 10px;
+		color: white;
+		background-color: $bgc-standart;
+		font-size: 18px;
+		font-weight: 600 ;
+		
+
+		&:hover{
+			background-color: $bgc-standart-hover;
+		}
+	}
+}
